@@ -1,3 +1,4 @@
+import * as atatus from 'atatus-spa';
 
 import { createRoot } from 'react-dom/client';
 import {MainView} from './components/main-view/main-view';
@@ -20,3 +21,7 @@ const root = createRoot(container);
 
 // Tells React to render your app in the root DOM element
 root.render(<MyFlixApplication />);
+
+
+atatus.config('57bf944b90b24e52874f24fbec6a21de').install();
+atatus.notify(new Error('Test Atatus Setup'));

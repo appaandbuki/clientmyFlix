@@ -1,4 +1,5 @@
 
+
 import { useState } from "react";
 
 export const LoginView = ({onLoggedIn}) => {
@@ -21,12 +22,14 @@ export const LoginView = ({onLoggedIn}) => {
           },
           body: JSON.stringify(data)
         })
+        // transforms the response content into a JSON object that your code can use to extract the JWT sent by the myFlix API.
         .then((response) => response.json())
         .then((data) => {
             console.log("Login response: ", data);
             if (data.user) {
                 localStorage.setItem("user", JSON.stringify(data.user));
                 localStorage.setItem("token", data.token);
+                //You then pass the user and token back to MainView so they can be used in all the subsequent API requests.
                 onLoggedIn(data.user, data.token);
               } else {
                 alert("No such user");
